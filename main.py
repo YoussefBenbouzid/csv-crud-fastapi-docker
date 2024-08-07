@@ -20,14 +20,14 @@ class Item(BaseModel):
 def aggiungiRecord(item: Item):
     with open(file_csv, mode='a', newline="") as file: #Apro il file CSV in modalità "a" ("append")
         writer = csv.writer(file) #Creo oggetto writer per scrivere sul file CSV
-        writer.writerow([item.id, item.nome, item.cognome, item.codice_fiscale]) #Aggiungo una singola riga al file CSV usando l'oggetto writer e il metodo writerow
+        writer.writerow([item.id, item.nome, item.cognome, item.codice_fiscale]) #Aggiungo una singola riga con i valori dell'item in ingresso al file CSV
     
 #Funzione che restituisce i record del file CSV come lista di oggetti Item
 def recuperaRecordTutti():
     lista = [] #Creo lista vuota
     with open(file_csv, mode='r', newline="") as file: #Apro il file CSV in modalità "r" ("read")
         reader = csv.DictReader(file) #Creo oggetto reader che restituisce i record come dizionari, dei quali ogni campo è una chiave
-        #Per ogni riga del file CSV aggiungo alla lista un oggetto Item
+        #Per ogni riga del file CSV aggiungo alla lista un oggetto item
         for row in reader:
             lista.append(Item(
                 id=int(row['id']),
@@ -45,14 +45,14 @@ def recuperaRecordUno(id: int): #Segnalo che restituisco un item
         #Per ogni riga del file CSV verifico se l'id è simile a quello ricercato, se la condizione è vera restituisco l'item ricercato
         for row in reader:
             if int(row['id']) == id:
-                trovato = True
+                trovato = True #Segnalo che l'id è stato trovato
                 return Item(
                     id=int(row['id']),
                     nome=row['nome'],
                     cognome=row['cognome'],
                     codice_fiscale=row['codice_fiscale']
                 )
-            if trovato == False:
+            if trovato == False: #Restituisco messaggio di errore se l'id non è stato trovato
                 response = {
                     "message": "Item not found"
                 }
@@ -78,7 +78,7 @@ def modificaRecord(id: int, nuovoItem: Item):
         writer = csv.DictWriter(file, fieldnames=fieldnames) #Creo un oggetto writer che scrive nel file CSV i record come dizionari
         writer.writeheader() #Scrivo l'intestazione
         writer.writerows(lista) #Scrivo nel file CSV le righe contenute nella lista
-    return trovato
+    return trovato #Restituisco il flag
 
 #Funzione che elimina un record del file CSV
 def eliminaRecord(id: int):
@@ -98,7 +98,7 @@ def eliminaRecord(id: int):
         writer = csv.DictWriter(file, fieldnames=fieldnames) #Creo un oggetto writer che scrive nel file CSV i record come dizionari
         writer.writeheader() #Scrivo l'intestazione
         writer.writerows(lista) #Scrivo nel file CSV le righe contenute nella lista
-    return trovato
+    return trovato #Restituisco il flag
 
 #Funzione che restituisce il numero dei record del file CSV
 def numeroRecord():

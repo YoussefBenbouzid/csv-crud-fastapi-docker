@@ -6,7 +6,7 @@ Il progetto permette di gestire un file CSV attraverso le operazioni CRUD (Creat
 ## Configurazione dell'environment
 Viene utilizzato Anaconda, piattaforma open source che permette di creare environment indipendenti.
 
-Attraverso Anaconda Prompt si è digitato il seguente comando, che permette di creare un environment chiamato "project" e che fa riferimento alla versione 3.12 di Python e che permette di installare nell'environment vari pacchetti, in particolare Pip:
+Attraverso Anaconda Prompt si è digitato il seguente comando, che crea un environment chiamato "project" che fa riferimento alla versione 3.12 di Python e che permette di installare nell'environment vari pacchetti, in particolare Pip:
 
 ```bash
 conda create --name project python=3.12
@@ -63,14 +63,14 @@ Metodo: POST, Path: /items/
 #### Endpoint per ottenere tutti i record:
 Metodo: GET, Path: /items/
 
-#### EEndpoint per ottenere un singolo record basato sull'ID:
+#### Endpoint per ottenere un singolo record basato sull'ID:
 Metodo: GET, Path: /items/{id}
 
-#### EEndpoint per aggiornare un record esistente:
+#### Endpoint per aggiornare un record esistente:
 Metodo: PUT, Path: /items/{id}
 
-#### EEndpoint per eliminare un record esistente:
+#### Endpoint per eliminare un record esistente:
 Metodo: DELETE, Path: /items/{id}
 
-#### EEndpoint per ottenere il numero di righe nel CSV:
+#### Endpoint per ottenere il numero di righe nel CSV:
 Metodo: GET, Path: /items/count
