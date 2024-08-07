@@ -149,7 +149,6 @@ def modificaItem(id: int, nuovoItem: Item):
         response = {
             "message": "Item not found"
         }
-        return JSONResponse(content=response)
     if trovato == True:
         response = {
             "id": nuovoItem.id,
@@ -167,7 +166,6 @@ def eliminaItem(id: int):
         response = {
             "message": "Item not found"
         }
-        return JSONResponse(content=response)
     if trovato == True:
         response = {
             "message": "Item deleted successfully"
