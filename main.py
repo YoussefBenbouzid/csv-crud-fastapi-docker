@@ -182,4 +182,5 @@ def numeroItem():
     return JSONResponse(content=response)
 
 #Eseguo l'applicazionne con server uvicorn su porta 8000 e su tutte le interfacce di rete
-uvicorn.run(app, host="0.0.0.0", port=8000)
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
